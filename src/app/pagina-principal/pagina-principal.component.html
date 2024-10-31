@@ -37,17 +37,28 @@
   </h2>
   <!--estilos del buscador de productos-->
   <form class="d-flex justify-content-end" role="search">
-    <div class="col-md-6">
-      <input class="form-control me-6" type="search" placeholder="Escribe un producto" aria-label="Search">
+    <div class="col-md-5">
+      <input class="form-control me-6" type="search" placeholder="Escribe un producto"[(ngModel)]="terminoBusqueda" name="busqueda" (input)="filtrarProductos()">
     </div>
-    <div class="col-md-2 ">
-      <button class="btn btn-outline-success" type="submit">
-        <h3>
-          Buscar
-        </h3>
+    <div class="col-md-2">
+      <button class="btn btn-outline-success" type="button" (click)="filtrarProductos()">
+        <h3>Buscar</h3>
       </button>
     </div>
   </form>
+  
+  <!-- Agregamos select para categorías -->
+  <div class="row mt-3">
+    <div class="col-md-4">
+      <select 
+        class="form-select" [(ngModel)]="categoriaSeleccionada" (change)="filtrarPorCategoria()">
+        <option value="">Todas las categorías</option>
+        <option value="fruta">Frutas</option>
+        <option value="verdura">Verduras</option>
+        <option value="tuberculo">Tubérculos</option>
+      </select>
+    </div>
+  </div>
   <br>
   <br>
   <div>   <!--subcontenedor para el inventario, contiene las tablas-->
@@ -67,15 +78,16 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let inv of inventario">
-            <td> {{inv.id_lote__id_Producto__nombre}} </td>
-            <td> {{inv.cantidad}} </td>    
-            <td> {{inv.unidad_medida}} </td>
-            <td> {{inv.precio_compra}} </td>
-            <td> {{inv.fecha_formateada}} </td>
-            <td> {{inv.id_lote__id_Producto__proveedor}} </td>
-            <td> {{inv.id_lote__numero_lote}} </td>
-            <td> {{inv.id_lote__estado}} </td>
+          <tr *ngFor="let inv of inventarioFiltrado">
+            <td>{{inv.id_lote__id_Producto__nombre}}</td>
+            <td>{{inv.cantidad}}</td>    
+            <td>{{inv.unidad_medida}}</td>
+            <td>{{inv.precio_compra}}</td>
+            <td>{{inv.fecha_formateada}}</td>
+            <td>{{inv.id_lote__id_Producto__proveedor}}</td>
+            <td>{{inv.id_lote__numero_lote}}</td>
+            <td>{{inv.id_lote__estado}}</td>
+            <td>{{inv.tiempoBodega}} dias.</td>
           </tr>
         </tbody>
       </table>
@@ -156,7 +168,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
     crossorigin="anonymous"></script>   <!--link para tener las funcionalidades de javaScript de Bootstrap-->
-    <script src="JS/inventario.js"></script> <!--link para vincular el archivo inventario.js-->
+    <script src="inventario.js"></script> <!--link para vincular el archivo inventario.js-->
   </body>
 
 </html>

@@ -9,4 +9,5 @@ export interface Inventario{
     precio_compra: number;
     id_lote__id_Producto__id_categoria__nombre: string;
     id_lote__id_Producto__proveedor: string;
+    tiempoBodega: string;
 }
