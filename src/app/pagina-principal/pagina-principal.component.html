@@ -143,20 +143,16 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <!-- Aquí puedes agregar las alertas que desees mostrar -->
-        <ul>
-          <li>
-            <h3>
-              Producto: Manzana está por rotar en 5 días
-            </h3>
+        <!-- Mostrar alertas dinámicas -->
+        <ul *ngIf="productosProximosARotar.length > 0; else sinAlertas">
+          <li *ngFor="let producto of productosProximosARotar">
+            <h3>{{ producto.mensaje }}</h3>
           </li>
-          <li>
-            <h3>
-              Producto: Pera está por rotar mañana
-            </h3>
-          </li>
-          <!-- Agrega más productos aquí según sea necesario -->
         </ul>
+        <!-- Mensaje si no hay alertas -->
+        <ng-template #sinAlertas>
+          <p>No hay productos próximos a rotar en los próximos 4 días.</p>
+        </ng-template>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

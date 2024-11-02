@@ -24,17 +24,26 @@ export class PaginaPrincipalComponent  implements OnInit{
   inventarioFiltrado: any[] = [];
   terminoBusqueda: string = '';
   categoriaSeleccionada: string = '';
+  productosProximosARotar: any[] = [];
 
   constructor(
-    private inventarioService: InventarioService) { }
+    private inventarioService: InventarioService) {
+
+      if (Notification.permission !== 'granted' && Notification.permission !== 'denied') {
+        Notification.requestPermission();
+      }
+     }
 
   ngOnInit(): void {
     this.inventarioService.getInventario().subscribe({
-      next: (data) => this.inventario = data,
+      next: (data) => {
+        this.inventario = data;
+        this.inventarioFiltrado = this.inventario; //paso mi array de inventario a otro array para la busqueda
+        console.log('inventario:', this.inventario); // Confirmar que los datos están cargados
+        this.verificarProductosProximosARotar(); 
+      },
       error: (error) => console.log('error al cargar el inventario:', error)
     });
-
-    this.inventarioFiltrado = this.inventario;  //paso mi array de inventario a otro array para la busqueda
   }
 
   filtrarProductos() {
@@ -101,4 +110,40 @@ export class PaginaPrincipalComponent  implements OnInit{
     return new Date(parseInt(anio), parseInt(mes) - 1, parseInt(dia));
   }
 
+
+  verificarProductosProximosARotar() {
+
+    console.log("Ejecutando verificarProductosProximosARotar");
+    const hoy = new Date();
+    hoy.setHours(0, 0, 0, 0);
+  
+    this.productosProximosARotar = []; // Reinicia la lista para evitar duplicados
+  
+    this.inventario.forEach(item => { const fechaRotacion = new Date(item.fechaRotacion);
+      fechaRotacion.setHours(0, 0, 0, 0); // Normaliza la fecha de rotación a medianoche
+
+      const diferenciaDias = (fechaRotacion.getTime() - hoy.getTime()) / (1000 * 60 * 60 * 24);
+      
+      
+      // Agregar logs para depuración
+      console.log("Producto:", item.id_lote__id_Producto__nombre);
+      console.log("Fecha de rotación:", fechaRotacion);
+      console.log("Fecha actual:", hoy);
+      console.log("Diferencia en días:", diferenciaDias);
+  
+      if (diferenciaDias >= 0 && diferenciaDias <= 4) {
+        const mensaje = `Producto: ${item.id_lote__id_Producto__nombre} está por rotar en ${
+          diferenciaDias === 0 ? 'hoy' : `${Math.round(diferenciaDias)} ${Math.round(diferenciaDias) === 1 ? 'día' : 'días'}`
+        }`;
+        
+        this.productosProximosARotar.push({ producto: item, mensaje });
+  
+        if (Notification.permission === 'granted') {
+          new Notification(mensaje);
+        } else {
+          console.log(`Notificación: ${mensaje}`);
+        }
+      }
+    });
+  }
 }
