@@ -1,0 +1,64 @@
+<body class="bg-image2">
+    
+<!--espacios en blanco para separar los div-->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <!--Texto de bienvenida a opciones de inventario-->
+    <div class=" d-flex  align-items-center mt-5 text-black card shadow-sm opacity-75 alturaContenedor">  <!--Contenedor con estilos -->
+        <div class="card-body justify-content-center opacity-100">  <!--div para agregar el mensaje de bienvenida-->
+            <h1 class="text-center">Bienvenido a Opciones</h1>
+            <h1 class="text-center">de Inventario </h1>
+        </div>
+    </div>
+<!--espacios en blanco para separar los div-->
+<br>
+<br>
+<br>
+  <!--Contenido de la pagina-->
+    <div class="mt-5 bg-light" >  <!--contenedor del menu de opciones-->
+      <br>
+      <br>  
+      <h2 class="text-center text-black mb-5 text-decoration-underline">  <!--titulo del contenedor-->
+            Menu
+        </h2>
+        <div class="row"> <!--Primera fila del contenedor-->
+            <div class="col-sm-6 text-center text-black mb-5">  <!--Primer columna de la primera fila -->
+                <button class="btn btn-warning">  <!--boton eliminar producto-->
+                  <a class="decorationNone text-black" routerLink="/eliminar">
+                    <h3>Eliminar Producto</h3>
+                  </a>
+                </button>
+            </div>
+            <div class="col-sm-6 text-center">  <!--segunda columna de la primera fila-->
+                <button class="btn btn-warning mb-5"> <!--boton eliminar ver historial-->
+                  <a class="decorationNone text-black" routerLink="/historial">
+                    <h3>Ver Historial</h3>
+                  </a>
+                </button>
+            </div>
+        </div>
+
+        <div class="row">   <!--segunda fila del contenedor-->
+          <div class="col-sm-6 text-center text-black mb-5">  <!--Primera columna de la segunda fila-->
+            <button class="btn btn-warning">  <!--boton eliminar agregar producto nuevo-->
+              <a class="decorationNone text-black" routerLink="/agregar">
+                <h3>Agregar Producto Nuevo</h3>
+              </a>
+            </button>
+          </div>
+          <div class="col-sm-6 text-center mb-5"> <!--Segunda columna de la segunda fila-->
+            <button class="btn btn-warning">  <!--boton para actualizar inventario-->
+              <a class="decorationNone text-black" routerLink="/actualizar">
+                <h3>  <!--texto del boton-->
+                  Actualizar Inventario 
+                </h3>
+              </a>
+            </button>
+        </div>
+      </div>
+    </div>
+    <div class="espaciadoDiv2"></div>

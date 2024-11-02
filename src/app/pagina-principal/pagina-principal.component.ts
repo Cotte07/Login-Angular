@@ -5,13 +5,14 @@ import { DatosService } from '../service/datos.service';
 import { Inventario } from '../interfaces/inventario.interface';
 import { InventarioService } from '../service/inventario.service';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 
 @Component({
   selector: 'app-pagina-principal',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, FormsModule],
+  imports: [CommonModule, HttpClientModule, FormsModule, RouterModule], 
   templateUrl: './pagina-principal.component.html',
   styleUrl: './pagina-principal.component.css',
   providers: [DatosService, InventarioService]

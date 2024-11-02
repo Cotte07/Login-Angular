@@ -2,7 +2,7 @@
 <div *ngIf="showNavbarAndFooter"> 
   <nav class="navbar navbar-expand-sm bg-body-tertiary fixed-top shadow">  <!--crear un navbar por medio de bootstrap-->
     <div class="container-fluid ">      <!--contenedor del navbar-->
-      <a class="navbar-brand " href="#">
+      <a class="navbar-brand" routerLink="/">
         <img src="assets/Images/LogoZapatoca.png" alt="LogoFruver" width="150px">     <!--imagen del logo del fruver-->
       </a>
       <!--se crea un boton para los elementos del navbar para hacerlo responsive-->
@@ -12,21 +12,21 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent" >
         <ul class="navbar-nav  mb-2 mb-lg-0" >  <!--lista de opciones para agregar al navbar-->
           <li class="nav-item">
-            <a class="nav-link active text-success" aria-current="page" href="PaginaPrincipal.html">   <!--Elemento de la lista de opciones del navbar -->
+            <a class="nav-link text-success me-4" routerLink="/">   <!--Elemento de la lista de opciones del navbar -->
                 <h2>
                     Inicio
                 </h2>
             </a>
           </li>
           <li class="nav-item ">        <!--Elemento de la lista de opciones del navbar -->
-            <a class="nav-link text-success me-4" href="OpcionesInventario.html">
+            <a class="nav-link text-success me-4" routerLink="/menu">
                 <h2>
                     Menu
                 </h2>
             </a>
           </li>
           <li class="nav-item mt-2">
-            <a href="LoginFruver.html">
+            <a routerLink="/login">
                 <button class="btn btn-success">        <!--opcion del navbar para cerrar sesion-->
                     Cerrar Sesion
                 </button>
@@ -40,7 +40,6 @@
 
 <router-outlet></router-outlet>
 
-
 <div *ngIf="showNavbarAndFooter">
   <!--inicio del footer-->
   <footer class="bg-dark text-white  pt-5 pb-4">  <!--estilos para textos y contenedores-->
@@ -50,21 +49,9 @@
           <h5 class="text-uppercase mb-4 font-weight-bold text-warning">
             Autores 
           </h5>
-          <p>
-            <a href="#" class="text-white decorationNone">  <!--autor 1-->
-              Oscar David Moreno Cote
-            </a>
-          </p>
-          <p>
-            <a href="#" class="text-white decorationNone">  <!--autor 2-->
-              Nicolas Sarmiento Gómez
-            </a>
-          </p>
-          <p>
-            <a href="#" class="text-white decorationNone">    <!--autor 3-->
-              Jhon Mario Almendrales Carreño 
-            </a>
-          </p>
+          <p>Oscar David Moreno Cote </p>
+          <p>Nicolas Sarmiento Gómez</p>
+          <p>Jhon Mario Almendrales Carreño</p>
         </div>
   
   
@@ -72,60 +59,31 @@
           <h5 class="text-uppercase mb-4 font-weight-bold text-warning">
             Contactos
           </h5>
-          <p>
-            <a href="#" class="text-white decorationNone">
-              WhatsApp: 322 259 2280
-            </a>
-          </p>
-          <p>
-            <a href="#" class="text-white decorationNone">
-              Correo: omoreo7&#64;udi.edu.co
-            </a>
-          </p>
+          <p>WhatsApp: 322 259 2280</p>
+          <p>Correo: omoreo7&#64;udi.edu.co</p>
         </div>
   
         <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">   <!--columna para las dirrecciones-->
           <h5 class="text-uppercase mb-4 font-weight-bold text-warning">
             Dirrección
           </h5>
-          <p>
-            <a href="#" class="text-white decorationNone">
-              UDI: Calle 9 No. 23-55-Bucaramanga
-            </a>
-          </p>
-          <p>
-            <a href="#" class="text-white decorationNone">
-              Cll 204a #38a-27-Floridablanca
-            </a>
-          </p>
+          <p> UDI: Calle 9 No. 23-55-Bucaramanga</p>
+          <p>Cll 204a #38a-27-Floridablanca</p>
         </div>
   
         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">   <!--columna para las redes sociales-->
           <h5 class="text-uppercase mb-4 font-weight-bold text-warning">
             Siguenos
           </h5>
-          <p>
-            <a href="#" class="text-white decorationNone">
-              <img src="assets/Images/instagram.png" alt="logoInstagram">
-              oscar_cotte7
-            </a>
-          </p>
-          <p>
-            <a href="#" class="text-white decorationNone">
-              <img src="assets/Images/instagram.png" alt="logoInstagram">
-              udi_oficial
-            </a>
-          </p>
+          <p> <img src="assets/Images/instagram.png" alt="logoInstagram">oscar_cotte7</p>
+          <p><img src="assets/Images/instagram.png" alt="logoInstagram">udi_oficial</p>
         </div>
         <div class="row  align-items-center">   <!--fila para agregar el copyright-->
           <div class="col-md-7 col-lg-8">   <!--columna para agrefar el copyright-->
-            <p>
-              Copyright ©2024 All rights reserved by:
-              <a class="decorationNone" href="#">
+            <p>Copyright ©2024 All rights reserved by:
                 <strong class="text-warning">   <!--texto para resaltar-->
                   TheCotte
                 </strong>
-              </a>
             </p>
           </div>
         </div>

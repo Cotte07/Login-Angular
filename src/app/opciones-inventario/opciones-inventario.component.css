@@ -1,5 +1,4 @@
 
-
 body{
     background-size: cover;     /*Ajusta la imagen a toda la pantalla*/
     background-repeat: no-repeat;   /*la imagen no se repite en caso de que no se ajuste a la pantalla*/
@@ -13,7 +12,7 @@ body{
 
 .buttonsNetwork{
     position: fixed;            /*organiza los elementos verticalmente*/
-    top: 50%;                   /*altura de los botones en la pagina*/
+    top: 25%;                   /*altura de los botones en la pagina*/
     left: 10px;
 }
 
