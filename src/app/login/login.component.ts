@@ -1,34 +1,45 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ FormsModule],
+  imports: [ FormsModule, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 
 export class LoginComponent {
-  username: string = '';
-  password: string = '';
+  loginForm: FormGroup;
 
-  constructor(private http: HttpClient, private router: Router){
-
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private router: Router
+  ) {
+    this.loginForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
   }
 
-  onSubmit(loginForm: any){
-    this.http.post("http://127.0.0.1:8000/login/", loginForm.value).subscribe(
-      (data: any)=>{
-        console.log(data); 
-        if('token' in data){
-          this.router.navigateByUrl('')  //se agrega la ruta de la pagina a la que se quiere ir
-        }
-
-      }
-    )
+  onSubmit() {
+    if (this.loginForm.valid) {
+      this.http.post('http://localhost:8100/api-token-auth/', this.loginForm.value)
+        .subscribe({
+          next: (response: any) => {
+            localStorage.setItem('access_token', response.token);
+            console.log('Login exitoso:', response);
+            this.router.navigate(['/']);
+          },
+          error: (error) => {
+            console.error('Error en login:', error);
+            alert('Error al iniciar sesión');
+          }
+        });
+    }
   }
-  
 }

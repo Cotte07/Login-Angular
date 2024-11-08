@@ -24,36 +24,33 @@
             <br>
             <br>
             <div class=" d-flex  justify-content-center">   <!--contenedor de la tabla de productos-->
-                <div class="col-6 alturaTabla">     <!--altura y configuración de una sola columna de la tabla-->
+                <div class="col-12 col-md-6">     <!--altura y configuración de una sola columna de la tabla-->
                     <table class="table table-warning table-responsive table-striped table-hover">
                         <thead class="table-dark">
+                            <th>
+                                <h4>Selecciona solo 1 producto</h4>
+                            </th>
                             <th class="text-center">  <!--cabeza de la tabla-->
-                            <h4>
-                                Lista de Productos  <!--titulo de la tabla-->
-                            </h4>
+                                <h4>Lista de Productos</h4>       <!--titulo de la tabla-->
+                            </th>
+                            <th>
+                                <h4 class="text-center">N° Lote</h4>
                             </th>
                         </thead>
                         <tbody class="text-center"> <!--cuerpo de la tabla-->
                         <!--tr significa fila -->
                         <!--td significa columnas-->
                         <!--h4 para hacer la letra en negrilla y de mayor tamaño-->
-                            <tr>  
-                                <td><h4 class="cursorMano">Tomate</h4></td>
-                            </tr>
-                            <tr> 
-                            <td><h4 class="cursorMano"> Pera</h4></td>
-                            </tr>
-                            <tr>
-                            <td><h4 class="cursorMano">Platano </h4></td>
-                            </tr>
-                            <tr>
-                                <td><h4 class="cursorMano">Manzana</h4></td>
-                            </tr>
-                            <tr>
-                                <td><h4 class="cursorMano">Papa</h4></td>
-                            </tr>
-                            <tr>
-                                <td><h4 class="cursorMano">Yuca</h4></td>
+                            <tr *ngFor="let inv of inventarioFiltrado">  
+                                <td>
+                                    <input class="form-check-input checkbox-grande" type="checkbox">
+                                </td>
+                                <td>
+                                    <h4>{{inv.id_lote__id_Producto__nombre}}</h4>
+                                </td>
+                                <td>
+                                    <h4>{{inv.id_lote__numero_lote}}</h4>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

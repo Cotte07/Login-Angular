@@ -23,14 +23,14 @@
             <div class="text-center fs-1 fw-bold">  <!--texto alineado, tamaño de letra, negriña-->
                 Login
             </div>
-            <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <div class="input-group mt-3">   <!--alinea los iconos y el input de username-->
                     <div class="input-group-text bg-success">
                         <img class="imageIconoUsuario"
                             src="assets/Images/iconoUsuario.png" 
                             alt="username">
                     </div>
-                    <input class="form-control" type="text" placeholder="username" name="username" [(ngModel)]="username">  <!--Cuandro para añadir texto para el username-->
+                    <input class="form-control" formControlName="username" type="text" placeholder="username" id="username">  <!--Cuandro para añadir texto para el username-->
                 </div>
                 <div class="input-group mt-1">   <!--alinea los iconos y el input de password-->
                     <div class="input-group-text bg-success">
@@ -39,10 +39,10 @@
                             alt="passwordIcon"
                         >
                     </div>
-                    <input class="form-control" type="password" placeholder="password" name="password" [(ngModel)]="password">  <!--Cuandro para añadir texto para el password-->
+                    <input class="form-control" formControlName="password" type="password" placeholder="password" id="password">  <!--Cuandro para añadir texto para el password-->
                 </div>
                 <div>     <!--estilo al boton login-->
-                    <button class="btn btn-success mt-4 w-100 shadow-sm" type="submit">
+                    <button class="btn btn-success mt-4 w-100 shadow-sm" type="submit" [disabled]="!loginForm.valid">
                         Entrar
                     </button>
                 </div>

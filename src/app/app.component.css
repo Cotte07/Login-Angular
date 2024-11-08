@@ -12,7 +12,7 @@ body{
 
 .buttonsNetwork{
     position: fixed;            /*organiza los elementos verticalmente*/
-    top: 50%;                   /*altura de los botones en la pagina*/
+    top: 25%;                   /*altura de los botones en la pagina*/
     left: 10px;
 }
 

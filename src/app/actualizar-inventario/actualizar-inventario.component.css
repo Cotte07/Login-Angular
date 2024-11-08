@@ -147,6 +147,12 @@ body{
     height: 2rem;
 }
 
+.checkbox-grande{   /*aumentar el tamaño del los botones check de la pagina eliminar producto*/
+    width: 2.0em;
+    height: 2.0em;
+    margin-right: 3.0em; 
+}
+
 
 /*//////////estilos para la pagina historialInventario///////////////*/
 .bg-image7{
@@ -161,7 +167,7 @@ body{
 }
 
 .alturaTabla3{      /*estilos de la tabla datos*/
-    width: 370px;
+    width: 500px;
     overflow-x: auto;
     overflow-y: auto;
     height: auto;

@@ -19,36 +19,39 @@
       <br>
       <!-- Después del contenido de bienvenida -->
 
-      <div class="container card shadow-sm p-4 mt-5 bg-light mb-5">
+        <div class="container card shadow-sm p-4 mt-5 bg-light mb-5 col-md-6 col-12">
             <h3 class="text-center text-decoration-underline">Lista de Productos</h3>
             <br>
             <br>
-            <form id="formEliminar">
-            <!-- Tabla de una sola columna para los nombres de los productos -->
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th><h3>Seleccionar</h3></th>
-                            <th><h3>Nombre</h3></th>
-                        </tr>
-                    </thead>
-                    <tbody id="productos-lista">
-                        <tr>
-                            
-                        </tr>
-                      
-                        <!-- Para agregar más filas-->
-                    </tbody>
-                </table>
-
-                <!-- Botones de acciones -->
-                <div class="d-flex justify-content-center gap-2 mt-4" >
-                    <a routerLink="/">
-                    <button type="button" class="btn btn-primary " onclick="consultarInventario()">
+            <form (ngSubmit)="eliminarSeleccionados()">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th><h3>Seleccionar</h3></th>
+                                <th><h3>Producto</h3></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let inv of inventarioFiltrado">
+                                <td>
+                                    <input
+                                        class="form-check-input checkbox-grande"
+                                        type="checkbox"
+                                        (change)="onSeleccionarProducto($event, inv.id_lote__id_Producto__id)" 
+                                    />
+                                </td>
+                                <td> {{inv.id_lote__id_Producto__nombre}} </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+        
+                <div class="d-flex justify-content-center gap-2 mt-4">
+                    <a routerLink="/" class="btn btn-success">
                         Consultar Inventario
-                    </button>
                     </a>
-                    <button type="submit" class="btn btn-danger"  id="eliminarSeleccionados">
+                    <button type="submit" class="btn btn-danger">
                         Eliminar Seleccionados
                     </button>
                 </div>
