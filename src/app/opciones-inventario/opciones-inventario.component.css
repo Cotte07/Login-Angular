@@ -72,6 +72,7 @@ body{
 /*///////////estilos de opcionesInventario////////*/
 .bg-image2{
     background-image: url(/assets/Images/ImgFondoManzanas.jpg);
+    background-attachment: fixed;
 }
 
 .alturaContenedor{      /*altura del div del texto de bienvenida al inventario*/
