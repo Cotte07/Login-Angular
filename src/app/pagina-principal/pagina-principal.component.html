@@ -68,7 +68,6 @@
           <tr>
             <th>Nombre</th>
             <th>Cantidad Inicial </th>
-            <th>Medida </th>
             <th>Precio Proveedor</th>
             <th>Fecha Compra </th>
             <th>Proveedor</th>
@@ -79,15 +78,20 @@
         </thead>
         <tbody>
           <tr *ngFor="let inv of inventarioFiltrado">
-            <td>{{inv.id_lote__id_Producto__nombre}}</td>
-            <td>{{inv.cantidad}}</td>    
-            <td>{{inv.unidad_medida}}</td>
-            <td>{{inv.precio_compra}}</td>
-            <td>{{inv.fecha_formateada}}</td>
-            <td>{{inv.id_lote__id_Producto__proveedor}}</td>
-            <td>{{inv.id_lote__numero_lote}}</td>
-            <td>{{inv.id_lote__estado}}</td>
-            <td>{{inv.tiempoBodega}} dias.</td>
+            <td>{{inv.id_lote__id_Producto__nombre}}</td> <!--nombre del producto-->
+            <td>{{inv.cantidad}} {{inv.unidad_medida}}</td>    <!--combino el campo cantidad y unidadmedida para visualizar mejor los datos-->
+            <td>{{inv.precio_compra | currency:'COP':'symbol-narrow':'1.0-0' }}</td>  <!--convierto el formato del precio a pesos-->
+            <td>{{inv.fecha_formateada}}</td> <!--fecha de compra-->
+            <td>{{inv.id_lote__id_Producto__proveedor}}</td> <!--nombre del proveedor-->
+            <td>{{inv.id_lote__numero_lote}}</td> <!--numero de lote(1 ó 2)-->
+            <td>
+              <span [class]="'badge ' + 
+                (inv.id_lote__estado === 'Verde' ? 'bg-success' : 
+                inv.id_lote__estado === 'Pinton' ? 'bg-warning' : 
+                inv.id_lote__estado === 'Maduro' ? 'bg-danger' : 'bg-secondary')">
+                {{ inv.id_lote__estado }} <!--estado en que se compró el producto)-->
+              </span>
+            <td>{{inv.tiempoBodega}} dias.</td>   <!--tiempo del producto en el fruver desde que se compró-->
           </tr>
         </tbody>
       </table>
@@ -96,7 +100,7 @@
     <br>
     <div class="row d-flex">
       <div class="col-md-4 text-center mb-4">
-        <button class="btn  btn-success" routerLink="/eliminar">
+        <button class="btn  btn-success" routerLink="/eliminar">  <!--boton para navegar a la ventana eliminarProducto-->
             <h5>
               Eliminar Producto
             </h5>
@@ -104,14 +108,14 @@
       </div>
       <div class="col-md-4 text-center mb-4">
         <a class="col-md-4 text-center mb-4-agregar" routerLink="/agregar">
-          <button class="btn btn-success">
+          <button class="btn btn-success">    <!--boton para navergar a la ventana agregarProducto-->
             <h5>Agregar Producto Nuevo</h5>
           </button> 
         </a>
       </div>
       <div class="col-md-4 text-center mb-4">
         <button class="btn btn-success">
-          <a class="decorationNone text-white" routerLink="/actualizar">
+          <a class="decorationNone text-white" routerLink="/actualizar">  <!--ventana para navegar a la ventana actualizarProducto-->
             <h5>
               Actualizar Inventario
             </h5>

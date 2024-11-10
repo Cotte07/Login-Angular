@@ -167,7 +167,19 @@ body{
     height: auto;
 }
 
-.cursorMano{        /*estilo para cambiar el cursor por una manita*/
-    cursor: pointer;
-    color: black;
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 200, 0, 0.1);
+}
+
+.table-active {
+    background-color: rgba(0, 200, 0, 0.2) !important;
+}
+
+.card {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.table-responsive {
+    max-height: 600px;
+    overflow-y: auto;
 }

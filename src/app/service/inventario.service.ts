@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Inventario } from '../interfaces/inventario.interface';
+import { Historial } from '../interfaces/historial.interface';
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +11,7 @@ import { Inventario } from '../interfaces/inventario.interface';
 export class InventarioService {
   private apiUrl = 'http://127.0.0.1:8100/inventario/';
   private apiUrlBase = 'http://127.0.0.1:8100';
+  private apirUrl2 = 'http://127.0.0.1:8200/historial/';
 
   constructor(private http: HttpClient) { }
 
@@ -20,4 +23,7 @@ export class InventarioService {
     return this.http.post<any>(`${this.apiUrlBase}/eliminar_producto/${id}/`, {});
   }
 
+  getHistorial(): Observable<Historial[]>{
+    return this.http.get<Historial[]>(this.apirUrl2);
+  }
 }

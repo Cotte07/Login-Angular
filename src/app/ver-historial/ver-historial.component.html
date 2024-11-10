@@ -16,171 +16,78 @@
     <br>
     <br>
     <br>
-    <div class="bg-light row">  <!--contenedor principal para agregar las tablas-->
-        <div>   <!--contenedor para el titulo-->
-            <h1 class="text-center text-decoration-underline">
-                Historial De Inventario
-            </h1>
-        </div>
-        <br>
-        <br>
-        <br>
-        <div class="col-xs-12 col-md-5">    <!--columna para la lista de fechas-->
-            <div>
-                <h3 class="text-center">
-                    Registros: 
-                </h3>
-
-                <div class=" d-flex  justify-content-center">   <!--contenedor de la tabla de productos-->
-                    <div class="col-6 alturaTabla2">     <!--altura y configuración de una sola columna de la tabla-->
-                        <table class="table table-success table-responsive table-striped table-hover">
-                            <thead class="table-success">
-                                
-                            </thead>
-                            <tbody class="text-center"> <!--cuerpo de la tabla-->
-                              <!--tr significa fila -->
-                              <!--td significa columnas-->
-                              <!--h4 para hacer la letra en negrilla y de mayor tamaño-->
-                                <tr>  
-                                    <td>
-                                        <h4 class="cursorMano">
-                                          5/2/2024
-                                        </h4>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                      <h4 class="cursorMano">
-                                        30/4/2024
-                                      </h4>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                      <h4 class="cursorMano">
-                                        13/5/2024
-                                      </h4>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                      <h4 class="cursorMano">
-                                        20/7/2024
-                                      </h4>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+    
+    <div class="container">
+        <div class="row">
+            <!-- tabla de fechas -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="card-title mb-0">Fechas de Registro</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <tbody>
+                                    <tr *ngFor="let fecha of fechasUnicas" 
+                                        [class.table-active]="fecha === fechaSeleccionada"
+                                        (click)="seleccionarFecha(fecha)"
+                                        style="cursor: pointer;">
+                                        <td><h4>{{ fecha | date:'dd/MM/yyyy' }}</h4></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-        <br>
-        <br>
-        <br>
-        </div>
-        <div class="col-xs-12 col-md-5"> <!--columna para la lista de datos-->
-            <h3 class="text-center">
-                Datos:
-            </h3>
-
-            <div class=" d-flex  justify-content-center">   <!--contenedor de la tabla de productos-->
-                <div class="col-6  alturaTabla3 ">     <!--altura y configuración de una sola columna de la tabla-->
-                    <table class="table table-primary table-responsive table-striped table-hover">
-                        <thead class="table-primary">
-                            <!--titulos de la tabla de datos-->
-                            <th>
-                                <h4>
-                                    Nombre
-                                </h4>
-                            </th>
-                            <th>
-                                <h4>
-                                    Fecha Compra
-                                </h4>
-                            </th>
-                            <th>
-                                <h4>
-                                    Precio Proveedor
-                                </h4>
-                            </th>
-                            <th>
-                                <h4>
-                                    Cantidad(Kg/Und)
-                                </h4>
-                            </th>
-                        </thead>
-                        <tbody class="text-center"> <!--cuerpo de la tabla-->
-                          <!--tr significa fila -->
-                          <!--td significa columnas-->
-                          <!--h4 para hacer la letra en negrilla y de mayor tamaño-->
-                            <tr>  
-                                <td>
-                                    <h4>
-                                      Tomate    
-                                    </h4>
-                                </td>
-                                <td>
-                                    <h4>
-                                        5/2/2024
-                                    </h4>
-                                </td>
-                                <td>
-                                    <h4>
-                                        120.000
-                                    </h4>
-                                </td>
-                                <td>
-                                    <h4>
-                                        6
-                                    </h4>
-                                </td>
-                            </tr>
-                            <tr>  
-                                <td>
-                                    <h4>
-                                        Limón
-                                    </h4>
-                                </td>
-                                <td>
-                                    <h4>
-                                        5/2/2024
-                                    </h4>
-                                </td>
-                                <td>
-                                    <h4>
-                                        30.000
-                                    </h4>
-                                </td>
-                                <td>
-                                    <h4>
-                                        15
-                                    </h4>
-                                </td>
-                            </tr>
-                            <tr>  
-                                <td>
-                                    <h4>
-                                      Papa    
-                                    </h4>
-                                </td>
-                                <td>
-                                    <h4>
-                                        5/2/2024
-                                    </h4>
-                                </td>
-                                <td>
-                                    <h4>
-                                        150.000
-                                    </h4>
-                                </td>
-                                <td>
-                                    <h4>
-                                        12
-                                    </h4>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+    
+            <!--tabla de productos -->
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">
+                            {{ fechaSeleccionada ? 'Productos del ' + (fechaSeleccionada | date:'dd/MM/yyyy') : 'Productos' }}
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th><h4>Producto</h4></th>
+                                        <th><h4>Lote</h4></th>
+                                        <th><h4>Cantidad</h4></th>
+                                        <th><h4>Estado</h4></th>
+                                        <th><h4>Fecha Rotación</h4></th>
+                                        <th><h4>Proveedor</h4></th>
+                                        <th><h4>Precio</h4></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of (fechaSeleccionada ? productosFiltrados : historial)">
+                                        <td>{{ item.nombre_producto }}</td>
+                                        <td>{{ item.numero_lote }}</td>
+                                        <td>{{ item.cantidad }} {{ item.unidad_medida }}</td>
+                                        <td>
+                                            <span [class]="'badge ' + 
+                                                (item.estado_lote === 'Verde' ? 'bg-success' : 
+                                                 item.estado_lote === 'Pinton' ? 'bg-warning' : 
+                                                 item.estado_lote === 'Maduro' ? 'bg-danger' : 'bg-secondary')">
+                                                {{ item.estado_lote }}
+                                            </span>
+                                        </td>
+                                        <td>{{ item.fecha_rotacion | date:'dd/MM/yyyy' }}</td>
+                                        <td>{{ item.proveedor }}</td>
+                                        <td>{{ item.precio_compra | currency:'COP':'symbol-narrow':'1.0-0' }}</td>
+                                    </tr>
+                                    <tr *ngIf="(fechaSeleccionada ? productosFiltrados : historial).length === 0">
+                                        <td colspan="7" class="text-center">No hay registros disponibles</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
