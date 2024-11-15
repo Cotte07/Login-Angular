@@ -22,7 +22,7 @@ export class ActualizarInventarioComponent implements OnInit {
 
   constructor(private inventarioService: InventarioService, private fb: FormBuilder, private http: HttpClient, private route: ActivatedRoute, private router: Router){
     this.editForm = this.fb.group({
-      proveedor: [''], fecha_Rotacion: [''], estado: [''], cantidad: [''], unidad_medida: [''], precio_compra: [''], fecha_compra: ['']});
+      proveedor: [''], fecha_Rotacion: [''], estado: [''], cantidad: [''], unidad_medida: [''], precio_compra: [''], fecha_compra: [''], num_lote:[''] });
   }
 
   ngOnInit(): void {
@@ -56,7 +56,8 @@ export class ActualizarInventarioComponent implements OnInit {
         cantidad: productoSeleccionado.cantidad,
         unidad_medida: productoSeleccionado.unidad_medida,
         precio_compra: productoSeleccionado.precio_compra,
-        fecha_compra: fechaActual // Asignamos la fecha actual automáticamente
+        fecha_compra: fechaActual, // Asignamos la fecha actual automáticamente
+        num_lote: productoSeleccionado.id_lote__numero_lote,
       });
     }
   }
@@ -86,7 +87,11 @@ export class ActualizarInventarioComponent implements OnInit {
         .subscribe({
           next: (response: any) => {
             console.log('Producto actualizado:', response);
-            alert('Producto actualizado correctamente');
+            alert('Producto actualizado correctamente');    //mensaje para indicar al usuario que se actualizo el producto
+
+            //restablecer el formulario
+            this.editForm.reset();
+
             this.router.navigate(['/actualizar']);
           },
           error: (error) => {
@@ -96,7 +101,7 @@ export class ActualizarInventarioComponent implements OnInit {
           }
         });
     } else {
-      alert('Por favor, complete todos los campos requeridos correctamente');
+      alert('Por favor complete todos los campos requeridos correctamente');
     }
   }
 

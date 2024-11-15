@@ -30,7 +30,7 @@
                         <table class="table table-warning table-responsive table-striped table-hover">
                             <thead class="table-dark">
                                 <th>
-                                    <h4>Selecciona solo 1 producto</h4>
+                                    <h4>Selecciona un producto</h4>
                                 </th>
                                 <th class="text-center">  <!--cabeza de la tabla-->
                                     <h4>Lista de Productos</h4>       <!--titulo de la tabla-->
@@ -45,7 +45,7 @@
                             <!--h4 para hacer la letra en negrilla y de mayor tamaño-->
                                 <tr *ngFor="let inv of inventarioFiltrado">  
                                     <td>
-                                        <input class="form-check-input checkbox-grande" type="checkbox" (change)="seleccionarProducto(inv.id_lote__id_Producto__id)">
+                                        <input class="form-check-input checkbox-grande" type="radio" name="productoSeleccionado" (change)="seleccionarProducto(inv.id_lote__id_Producto__id)">
                                     </td>
                                     <td>
                                         <h4>{{inv.id_lote__id_Producto__nombre}}</h4>
@@ -82,7 +82,7 @@
                                 Unidad de Medida
                             </h2>
                             <select class="form-select imput text-center" aria-label="" formControlName="unidad_medida">
-                                <option selected>Trae en Kg o Und</option>
+                                <option selected> ¿Trae en Kg o Und?</option>
                                 <option value="Und">unidad</option>
                                 <option value="Kg">kilogramos</option>
                               </select>
@@ -102,7 +102,7 @@
                                 Estado
                             </h2>
                             <select class="form-select imput text-center" aria-label="Default select example" formControlName="estado">
-                                <option selected>Como se encuentra el producto</option>
+                                <option selected>¿Como ve el producto?</option>
                                 <option value="Verde">Verde</option>
                                 <option value="Pinton">Pinton</option>
                                 <option value="Maduro">Maduro</option>
@@ -113,6 +113,18 @@
                                 Fecha Rotación
                             </h2>
                             <input id="fechaCompra" class="form-control w-75 mb-3 text-center imput mx-5" type="date" placeholder="Fecha" formControlName="fecha_Rotacion"> <!--ingresar texto-->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2 class="text-center">
+                                Numero Lote
+                            </h2>
+                            <select class="form-select imput text-center" aria-label="Default select example" formControlName="num_lote">
+                                <option selected>¿A que lote pertenece?</option>
+                                <option value=1>1</option>
+                                <option value=2>2</option>
+                            </select>
                         </div>
                     </div>
                     <br>    <!--espacios  pequeños para separar-->

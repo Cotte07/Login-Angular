@@ -52,7 +52,7 @@ export class VerHistorialComponent implements OnInit {
     this.fechaSeleccionada = fecha;
     //filtrar productos que coincidan con la fecha seleccionada
     this.productosFiltrados = this.historial.filter(item => 
-      item.fecha_compra.startsWith(fecha)
+    item.fecha_compra.startsWith(fecha)
     );
   }
 }

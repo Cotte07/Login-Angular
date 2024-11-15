@@ -183,3 +183,8 @@ body{
     max-height: 600px;
     overflow-y: auto;
 }
+
+.alturaTabla4{      /*estilos de la tabla datos*/
+    overflow-y: auto;
+    max-height: 400px;
+}
