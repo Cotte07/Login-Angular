@@ -9,7 +9,7 @@
 <!--Texto de bienvenida a opciones de inventario-->
     <div class=" d-flex  align-items-center mt-5 text-black card shadow-sm opacity-75 alturaContenedor">  <!--Contenedor con estilos -->
         <div class="card-body justify-content-center opacity-100">  <!--div para agregar el mensaje de bienvenida-->
-            <h1 class="text-center">
+            <h1 class="text-center"><!--titulo de bienvenida de la pagina-->
             Bienvenido, Agrega
             </h1>
             <h1 class="text-center">
@@ -37,7 +37,7 @@
                 </h2>
                 <input id="nombre" class="form-control w-75 mb-3 text-center imput mx-5" type="text" placeholder="Nombre del Producto" formControlName="nombre"> <!--ingresar texto-->
                 <div *ngIf="multiForm.get('nombre')?.errors?.['required']">
-                  Nombre es requerido
+                  Nombre es requerido<!--aviso en caso de que el usuario no haya registrado el nombre del producto-->
                 </div>
               </div>
               <div class="col-sm-4 text-center text-black mb-5 "> <!--contenedor para el input-->
@@ -50,7 +50,7 @@
                 <h2 class="text-center">Unidad Medida</h2>
                 <div class="col-9 ms-5">
                   <select class="form-select imput text-center" aria-label="" formControlName="unidad_medida">
-                    <option selected>Trae en Kg o Und</option>
+                    <option selected>Trae en Kg o Und</option><!--elegir unidad de medida del producto-->
                     <option value="Und">unidad</option>
                     <option value="Kg">kilogramos</option>
                   </select>
@@ -78,7 +78,7 @@
                 <h2 class="text-center">N° lote</h2>
                 <div class="col-9 ms-5">
                   <select class="form-select imput text-center" aria-label="Default select example" formControlName="numero_lote">
-                    <option selected>Lote al que pertenece el producto</option>
+                    <option selected>Lote al que pertenece el producto</option><!--elegir el numero de lote al que pertenece el producto-->
                     <option value="1">Lote 1</option>
                     <option value="2">Lote 2</option>
                   </select>
@@ -88,7 +88,7 @@
                 <h2 class="text-center">Estado</h2>
                 <div class="col-9 ms-5">
                   <select class="form-select imput text-center" aria-label="Default select example" formControlName="estado">
-                    <option selected>Como se encuentra el producto</option>
+                    <option selected>Como se encuentra el producto</option><!--registar estado del producto-->
                     <option value="Verde">Verde</option>
                     <option value="Pinton">Pinton</option>
                     <option value="Maduro">Maduro</option>
@@ -100,7 +100,7 @@
                 <h2 class="text-center">Categoria</h2>
                 <div class="col-9 ms-5">
                   <select class="form-select imput text-center" aria-label="" formControlName="nombreCategoria">
-                    <option selected>Tipo de categorias</option>
+                    <option selected>Tipo de categorias</option><!--registrar categoria del producto-->
                     <option value="Tuberculo">Tuberculo</option>
                     <option value="Verdura">Verdura</option>
                     <option value="Fruta">Fruta</option>
