@@ -31,8 +31,7 @@ export class VerHistorialComponent implements OnInit {
         if (response.status === 'success' && Array.isArray(response.data)) {
           this.historial = response.data;
           // obtener fechas únicas 
-          this.fechasUnicas = [...new Set(this.historial.map(item => 
-            item.fecha_compra.split(' ')[0]
+          this.fechasUnicas = [...new Set(this.historial.map(item => item.fecha_compra.split(' ')[0]
           ))].sort().reverse(); //ordenar fechas de más reciente a más antigua
         } else {
           this.error = 'formato de respuesta inesperado';
@@ -51,8 +50,6 @@ export class VerHistorialComponent implements OnInit {
   seleccionarFecha(fecha: string) {
     this.fechaSeleccionada = fecha;
     //filtrar productos que coincidan con la fecha seleccionada
-    this.productosFiltrados = this.historial.filter(item => 
-    item.fecha_compra.startsWith(fecha)
-    );
+    this.productosFiltrados = this.historial.filter(item => item.fecha_compra.startsWith(fecha));
   }
 }

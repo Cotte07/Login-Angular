@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Inventario } from '../interfaces/inventario.interface';
@@ -14,8 +14,8 @@ export class InventarioService {
   private apirUrl2 = 'http://127.0.0.1:8200/historial/';
 
   constructor(private http: HttpClient) { }
-
-  getInventario(): Observable<Inventario[]>{
+  
+  getInventario(): Observable<Inventario[]>{  //
     return this.http.get<Inventario[]>(this.apiUrl);
   }
 
@@ -25,5 +25,13 @@ export class InventarioService {
 
   getHistorial(): Observable<Historial[]>{
     return this.http.get<Historial[]>(this.apirUrl2);
+  }
+
+  //Guardar datos de un producto
+  guardarDatos(formData: any): Observable<any> {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders().set('Authorization', `Token ${token}`);
+
+    return this.http.post(`${this.apiUrlBase}/guardarDatos/`, formData, { headers });
   }
 }

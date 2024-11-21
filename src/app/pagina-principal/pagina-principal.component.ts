@@ -30,8 +30,7 @@ export class PaginaPrincipalComponent  implements OnInit{
 
   ngOnInit(): void {
     this.inventarioService.getInventario().subscribe({
-      next: (data) => {
-        this.inventario = data;
+      next: (data) => {   this.inventario = data;
         this.inventarioFiltrado = this.inventario; //paso mi array de inventario a otro array para la busqueda
       },
       error: (error) => console.log('error al cargar el inventario:', error)
@@ -44,8 +43,7 @@ export class PaginaPrincipalComponent  implements OnInit{
       return;
     }
 
-    this.inventarioFiltrado = this.inventario.filter(item => {
-      const coincideNombre = this.terminoBusqueda ? 
+    this.inventarioFiltrado = this.inventario.filter(item => { const coincideNombre = this.terminoBusqueda ? 
         item.id_lote__id_Producto__nombre
           .toLowerCase()
           .includes(this.terminoBusqueda.toLowerCase()) : true;

@@ -32,15 +32,13 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
     this.router.events
       .pipe(filter((event: Event) => event instanceof NavigationEnd))
-      .subscribe((event: Event) => {
-        const navEndEvent = event as NavigationEnd;
+      .subscribe((event: Event) => { const navEndEvent = event as NavigationEnd;
         // Ocultar navbar y footer si la URL contiene "/login"
         this.showNavbarAndFooter = !navEndEvent.url.includes('/login');
 
 
         this.inventarioService.getInventario().subscribe({
-          next: (data) => {
-            this.inventario = data;
+          next: (data) => {this.inventario = data;
             this.inventarioFiltrado = this.inventario; //paso mi array de inventario a otro array para la busqueda
             this.verificarProductosProximosARotar(); 
           },
@@ -63,8 +61,7 @@ export class AppComponent implements OnInit{
   
       if (diferenciaDias >= 0 && diferenciaDias <= 4) {
         const mensaje = `Producto: ${item.id_lote__id_Producto__nombre} está por rotar en ${
-          diferenciaDias === 0 ? 'el dia de hoy' : `${Math.round(diferenciaDias)} ${Math.round(diferenciaDias) === 1 ? 'día' : 'días'}`
-        }`;
+          diferenciaDias === 0 ? 'el dia de hoy' : `${Math.round(diferenciaDias)} ${Math.round(diferenciaDias) === 1 ? 'día' : 'días'}`}`;
         
         this.productosProximosARotar.push({ producto: item, mensaje });
   
