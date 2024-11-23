@@ -27,8 +27,7 @@ export class EliminarProductoComponent implements OnInit {
 
   ngOnInit(): void {
     this.inventarioService.getInventario().subscribe({
-      next: (data) => {
-        this.inventario = data;
+      next: (data) => { this.inventario = data;
         this.inventarioFiltrado = this.inventario; //paso mi array de inventario a otro array para la busqueda
       },
       error: (error) => console.log('error al cargar el inventario:', error)
@@ -76,18 +75,14 @@ export class EliminarProductoComponent implements OnInit {
     }
   
     if (confirm("¿Estás seguro de que deseas eliminar los productos seleccionados?")) {
-      const eliminaciones = this.seleccionados.map((id) =>
-        this.inventarioService.eliminarProducto(id)
-      );
+      const eliminaciones = this.seleccionados.map((id) => this.inventarioService.eliminarProducto(id));
   
       forkJoin(eliminaciones).subscribe({
-        next: () => {
-          alert("Productos eliminados correctamente.");
+        next: () => { alert("Productos eliminados correctamente.");
           this.inventarioFiltrado; //recarga la tabla de inventario
           this.seleccionados = []; //limpia la lista de seleccionados
         },
-        error: (error) => {
-          console.error("Error al eliminar productos:", error);
+        error: (error) => { console.error("Error al eliminar productos:", error);
           alert("Hubo un error al eliminar los productos.");
         },
       });
@@ -97,8 +92,7 @@ export class EliminarProductoComponent implements OnInit {
   //metodo para recargar la lista de productos
 cargarProductos() {
   this.inventarioService.getInventario().subscribe({
-    next: (productos) => {
-      this.inventarioFiltrado = productos;  //actualiza la lista de productos en el frontend
+    next: (productos) => { this.inventarioFiltrado = productos;  //actualiza la lista de productos en el frontend
     },
     error: (error) => {
       console.error("Error al cargar los productos:", error);
